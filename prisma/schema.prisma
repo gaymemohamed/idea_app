@@ -1,0 +1,25 @@
+
+datasource db {
+  provider = "postgresql" // other options are: "mysql" and "sqlite"
+  url      = "postgresql://postgres:SuperSecret@localhost:5432/ideas?schema=dt"
+}
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Idea {
+  id             String       @id @default(cuid())
+  idea           String 
+  cratedAt       DateTime  @default(now())
+  decription     String
+
+}
+
+model User {
+  id            String       @id @default(cuid())
+  username      String 
+  email         String       @unique 
+  password      String
+  cratedAt      DateTime     @default(now())
+  ideas          Idea[]
+}

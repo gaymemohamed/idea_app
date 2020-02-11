@@ -1,0 +1,16 @@
+
+datasource db {
+  provider = "postgresql" // other options are: "mysql" and "sqlite"
+  url = "***"
+}
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Idea {
+  id             String       @id @default(cuid())
+  idea           String 
+  cratedAt       DateTime  @default(now())
+  decription     String
+
+}
